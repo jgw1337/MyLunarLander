@@ -18,7 +18,7 @@ public class Meteor {
 		x = rand.nextInt(Framework.frameWidth);
 		y = rand.nextInt(Framework.frameHeight);
 
-		speedX = rand.nextInt(99) + 1;
+		speedX = rand.nextInt(9) + 1;
 		speedY = speedX;
 	}
 	
@@ -28,7 +28,6 @@ public class Meteor {
 	
 	private void LoadContent() {
 		// TODO Auto-generated method stub
-
 	}
 	
 	public void ResetMeteor() {
@@ -63,5 +62,4 @@ public class Meteor {
 	public void setY(int y) {
 		this.y = y;
 	}
-
 }

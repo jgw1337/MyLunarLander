@@ -1,6 +1,7 @@
 package com.jgw.framework;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -34,7 +35,7 @@ public class Game {
 
 	// Temporary string (placeholder)
 	private String tmpStr;
-	
+
 	private Random rand = new Random();
 
 	public Game() {
@@ -104,11 +105,11 @@ public class Game {
 			if (m.getX() > Framework.frameWidth || m.getY() > Framework.frameHeight) {
 				meteors.remove(i);
 				Meteor m2 = new Meteor();
-				if (rand.nextInt(1) == 1) {
+				if (rand.nextInt(2) == 1) {
 					m2.setX(rand.nextInt(Framework.frameWidth));
-					m2.setY(0);
+					m2.setY(-10);
 				} else {
-					m2.setX(0);
+					m2.setX(-10);
 					m2.setY(rand.nextInt(Framework.frameHeight));
 				}
 				meteors.add(m2);
@@ -117,7 +118,6 @@ public class Game {
 
 		// Move rocket
 		playerRocket.Update();
-		
 
 		// Check where the rocket is (in space, landed, or crashed)
 		// First, check bottom y coord of rocket if it's near landing area
@@ -159,7 +159,6 @@ public class Game {
 			Meteor m = (Meteor) meteors.get(i);
 			m.Draw(g2d);
 		}
-		
 	}
 
 	/**
@@ -178,7 +177,7 @@ public class Game {
 		tmpStr = "Press space or enter to restart.";
 		g2d.drawString(tmpStr, (Framework.frameWidth / 2)
 				- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
-				Framework.frameHeight / 3 + 70);
+				Framework.frameHeight / 3 + 100);
 
 		if (playerRocket.landed) {
 			tmpStr = "You have successfully landed!";
@@ -190,7 +189,7 @@ public class Game {
 					+ " seconds.";
 			g2d.drawString(tmpStr, (Framework.frameWidth / 2)
 					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
-					Framework.frameHeight / 3 + 20);
+					Framework.frameHeight / 3 + 40);
 		} else {
 			g2d.setColor(Color.RED);
 

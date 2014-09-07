@@ -130,7 +130,7 @@ public class PlayerRocket {
 
 	public void Draw(Graphics2D g2d) {
 		g2d.setColor(Color.WHITE);
-		g2d.drawString("Rocket coordinates: " + x + " : " + y, 5, 15);
+		g2d.drawString("Rocket coordinates: " + x + " : " + y, 5, 35);
 
 		// If landed
 		if (landed) {

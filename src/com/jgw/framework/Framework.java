@@ -1,6 +1,8 @@
 package com.jgw.framework;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -51,6 +53,7 @@ public class Framework extends Canvas {
 
 	// Temporary String (placeholder)
 	private String tmpStr;
+	Font font = new Font("Verdana", Font.PLAIN, 36);
 
 	// Menu image
 	private BufferedImage menuImg;
@@ -183,6 +186,8 @@ public class Framework extends Canvas {
 	 */
 	@Override
 	public void Draw(Graphics2D g2d) {
+		g2d.setFont(font);
+
 		switch (gameState) {
 		case PLAYING:
 			game.Draw(g2d, mousePosition());
@@ -194,15 +199,15 @@ public class Framework extends Canvas {
 			g2d.drawImage(menuImg, 0, 0, frameWidth, frameHeight, null);
 			g2d.setColor(Color.WHITE);
 
-			tmpStr = "Use w a d to control the rocket";
+			tmpStr = "Use w-a-d to control the rocket";
 			g2d.drawString(tmpStr, (frameWidth / 2)
 					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
-					frameHeight / 2);
+					frameHeight / 2 + 100);
 
 			tmpStr = "Press any key to start the game";
 			g2d.drawString(tmpStr, (frameWidth / 2)
 					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
-					frameHeight / 2 + 30);
+					frameHeight / 2 + 200);
 
 			g2d.drawString("-jgw-", 7, frameHeight - 5);
 			break;
