@@ -197,17 +197,32 @@ public class Framework extends Canvas {
 			break;
 		case MAIN_MENU:
 			g2d.drawImage(menuImg, 0, 0, frameWidth, frameHeight, null);
+
+			// First set of text for drop shadow
+			g2d.setColor(Color.BLACK);
+
+			tmpStr = "Use w-a-d to control the rocket";
+			g2d.drawString(tmpStr, (frameWidth / 2)
+					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2) + 1,
+					frameHeight / 2 + 100);
+
+			tmpStr = "Press any key to start the game";
+			g2d.drawString(tmpStr, (frameWidth / 2)
+					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2) + 1,
+					frameHeight / 2 + 200);
+
+			// Second set of text
 			g2d.setColor(Color.WHITE);
 
 			tmpStr = "Use w-a-d to control the rocket";
 			g2d.drawString(tmpStr, (frameWidth / 2)
 					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
-					frameHeight / 2 + 100);
+					frameHeight / 2 + 100 - 1);
 
 			tmpStr = "Press any key to start the game";
 			g2d.drawString(tmpStr, (frameWidth / 2)
 					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
-					frameHeight / 2 + 200);
+					frameHeight / 2 + 200 - 1);
 
 			g2d.drawString("-jgw-", 7, frameHeight - 5);
 			break;

@@ -26,7 +26,7 @@ public class Game {
 	private LandingArea landingArea;
 
 	ArrayList<Meteor> meteors = new ArrayList<Meteor>();
-	
+
 	// Game background
 	private BufferedImage backgroundImg;
 
@@ -102,7 +102,8 @@ public class Game {
 		for (int i = 0; i < meteors.size(); i++) {
 			Meteor m = (Meteor) meteors.get(i);
 			m.Update();
-			if (m.getX() > Framework.frameWidth || m.getY() > Framework.frameHeight) {
+			if (m.getX() > Framework.frameWidth
+					|| m.getY() > Framework.frameHeight) {
 				meteors.remove(i);
 				Meteor m2 = new Meteor();
 				if (rand.nextInt(2) == 1) {
@@ -174,29 +175,65 @@ public class Game {
 	public void DrawGameOver(Graphics2D g2d, Point mousePosition, long gameTime) {
 		Draw(g2d, mousePosition);
 
+		// First set of text for drop shadow
+		g2d.setColor(Color.BLACK);
+
+		tmpStr = "Press space or enter to restart.";
+		g2d.drawString(tmpStr, (Framework.frameWidth / 2)
+				- (g2d.getFontMetrics().stringWidth(tmpStr) / 2) + 1,
+				Framework.frameHeight / 3 + 100);
+
+		// Second set of text
+		g2d.setColor(Color.WHITE);
 		tmpStr = "Press space or enter to restart.";
 		g2d.drawString(tmpStr, (Framework.frameWidth / 2)
 				- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
-				Framework.frameHeight / 3 + 100);
+				Framework.frameHeight / 3 + 100 - 1);
 
 		if (playerRocket.landed) {
+			// First set of text for drop shadow
+			g2d.setColor(Color.BLACK);
+
 			tmpStr = "You have successfully landed!";
 			g2d.drawString(tmpStr, (Framework.frameWidth / 2)
-					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
+					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2) + 1,
 					Framework.frameHeight / 3);
 
 			tmpStr = "You have landed in " + gameTime / Framework.secInNanosec
 					+ " seconds.";
 			g2d.drawString(tmpStr, (Framework.frameWidth / 2)
-					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
+					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2) + 1,
 					Framework.frameHeight / 3 + 40);
+
+			// Second set of text
+			g2d.setColor(Color.WHITE);
+
+			tmpStr = "You have successfully landed!";
+			g2d.drawString(tmpStr, (Framework.frameWidth / 2)
+					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
+					Framework.frameHeight / 3 - 1);
+
+			tmpStr = "You have landed in " + gameTime / Framework.secInNanosec
+					+ " seconds.";
+			g2d.drawString(tmpStr, (Framework.frameWidth / 2)
+					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
+					Framework.frameHeight / 3 + 40 - 1);
 		} else {
+			// First set of text for drop shadow
+			g2d.setColor(Color.BLACK);
+
+			tmpStr = "You have crashed the rocket!";
+			g2d.drawString(tmpStr, (Framework.frameWidth / 2)
+					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2) + 1,
+					Framework.frameHeight / 3);
+
+			// Second set of text
 			g2d.setColor(Color.RED);
 
 			tmpStr = "You have crashed the rocket!";
 			g2d.drawString(tmpStr, (Framework.frameWidth / 2)
 					- (g2d.getFontMetrics().stringWidth(tmpStr) / 2),
-					Framework.frameHeight / 3);
+					Framework.frameHeight / 3 - 1);
 			g2d.drawImage(redBorderImg, 0, 0, Framework.frameWidth,
 					Framework.frameHeight, null);
 		}

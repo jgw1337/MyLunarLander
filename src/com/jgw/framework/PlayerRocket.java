@@ -129,8 +129,13 @@ public class PlayerRocket {
 	}
 
 	public void Draw(Graphics2D g2d) {
+		// First set of text for drop shadow
+		g2d.setColor(Color.BLACK);
+		g2d.drawString("Rocket coordinates: " + x + " : " + y, 5 + 1, 35);
+
+		// Second set of text
 		g2d.setColor(Color.WHITE);
-		g2d.drawString("Rocket coordinates: " + x + " : " + y, 5, 35);
+		g2d.drawString("Rocket coordinates: " + x + " : " + y, 5, 35 - 1);
 
 		// If landed
 		if (landed) {
